@@ -63,6 +63,13 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 			$values['field'] = 'text';
 			
 		break;
+		
+		case 'state' :
+			
+			$values['field'] = 'select';
+			$values['values'] = $woocommerce->countries->get_states( 'US' );
+			
+		break;
 
 		case 'country' :
 

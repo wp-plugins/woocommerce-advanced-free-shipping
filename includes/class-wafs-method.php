@@ -15,7 +15,8 @@ if ( ! class_exists( 'Wafs_Free_Shipping_Method' ) ) {
 		public function __construct() {
 
 			$this->id                	= 'advanced_free_shipping';
-			$this->method_title  		= __( 'Advanced Free Shipping' );
+			$this->title  				= __( 'Free Shipping <small>(may change at user configuration)</small>', 'wafs' );
+			$this->method_title  		= __( 'Advanced Free Shipping', 'wafs' );
 			$this->method_description 	= __( 'Configure WooCommerce Advanced Free Shipping' ); // 
 
 			$this->matched_methods	 	= $this->wafs_match_methods();

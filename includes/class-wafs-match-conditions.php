@@ -28,6 +28,7 @@ class Wafs_Match_Conditions {
 		
 		add_action( 'wafs_match_condition_zipcode', array( $this, 'wafs_match_condition_zipcode' ), 10, 3 );
 		add_action( 'wafs_match_condition_city', array( $this, 'wafs_match_condition_city' ), 10, 3 );
+		add_action( 'wafs_match_condition_state', array( $this, 'wafs_match_condition_state' ), 10, 3 );
 		add_action( 'wafs_match_condition_country', array( $this, 'wafs_match_condition_country' ), 10, 3 );
 		add_action( 'wafs_match_condition_role', array( $this, 'wafs_match_condition_role' ), 10, 3 );
 		
@@ -268,7 +269,31 @@ class Wafs_Match_Conditions {
 		
 	}
 	
+	
+	/* Match state
+	 *
+	 * @param bool $match
+	 * @param string $operator
+	 * @param mixed $value
+	 * @return bool
+	 */
+	public function wafs_match_condition_state( $match, $operator, $value ) {
 
+		global $woocommerce;
+		
+		if ( ! isset( $woocommerce->customer ) ) return;
+		
+		if ( '==' == $operator ) :
+			$match = ( $woocommerce->customer->get_shipping_state() == $value );
+		elseif ( '!=' == $operator ) :
+			$match = ( $woocommerce->customer->get_shipping_state() != $value );
+		endif;
+			
+		return $match;
+		
+	}
+	
+	
 	/* Match city
 	 *
 	 * @param bool $match

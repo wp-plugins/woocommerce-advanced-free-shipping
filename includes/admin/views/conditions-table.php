@@ -73,7 +73,7 @@ $method_conditions = get_posts( array( 'posts_per_page' => '-1', 'post_type' => 
 			<tfoot>
 				<tr>
 					<th colspan='4' style='padding-left: 10px;'>
-						<a href='/wp-admin/post-new.php?post_type=wafs' class='add button'><?php _e( 'Add Free Shipping Method', 'wapl' ); ?></a>
+						<a href='<?php echo admin_url( 'post-new.php?post_type=wafs' ); ?>' class='add button'><?php _e( 'Add Free Shipping Method', 'wapl' ); ?></a>
 					</th>
 				</tr>
 			</tfoot>

@@ -5,6 +5,7 @@ function wafs_condition_description( $condition ) {
 	global $woocommerce;
 
 	$descriptions = array(
+		'state' 			=> __( 'States are only available in the U.S.', 'wafs' ),
 		'weight' 			=> __( 'Weight calculated on all the cart contents', 'wafs' ),
 		'length' 			=> __( 'Compared to lengthiest product in cart', 'wafs' ),
 		'width' 			=> __( 'Compared to widest product in cart', 'wafs' ),

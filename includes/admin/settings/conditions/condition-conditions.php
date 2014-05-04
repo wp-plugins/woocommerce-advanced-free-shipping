@@ -14,6 +14,7 @@ function wafs_condition_conditions( $id, $group = 0, $current_value = 'total' ) 
 		__( 'User Details', 'wafs' ) => array(
 			'zipcode' 			=> __( 'Zipcode', 'wafs' ),
 			'city' 				=> __( 'City', 'wafs' ),
+			'state'	 			=> __( 'State', 'wafs' ),
 			'country' 			=> __( 'Country', 'wafs' ),
 			'role'	 			=> __( 'User role', 'wafs' ),
 		),
