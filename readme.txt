@@ -26,7 +26,7 @@ WooCommerce Advanced Free Shipping is an plugin which allows you to set up advan
 
 **Look at the screenshots!**
 
-**Translations, feature requests, ratings and donations are welcome and much appreciated!**
+**Translations, feature requests, ratings and donations are welcome!**
 
 == Installation ==
 
