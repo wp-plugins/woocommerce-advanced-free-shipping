@@ -20,7 +20,7 @@ $settings = get_post_meta( $post->ID, '_wafs_shipping_method' );
 	
 		<label for='shipping_title'><?php _e( 'Shipping title', 'wafs' ); ?></label>
 		<input type='text' class='' id='shipping_title' name='_wafs_shipping_method[shipping_title]' 
-			value='<?php echo $settings[0]['shipping_title']; ?>' placeholder='<?php _e( 'e.g. Free Shipping', 'wafs' ); ?>'>
+			value='<?php echo @$settings[0]['shipping_title']; ?>' placeholder='<?php _e( 'e.g. Free Shipping', 'wafs' ); ?>'>
 		
 	</p>
 		
