@@ -38,7 +38,6 @@ class Wafs_Match_Conditions {
 		add_action( 'wafs_match_condition_weight', array( $this, 'wafs_match_condition_weight' ), 10, 3 );
 		add_action( 'wafs_match_condition_stock', array( $this, 'wafs_match_condition_stock' ), 10, 3 );
 		add_action( 'wafs_match_condition_stock_status', array( $this, 'wafs_match_condition_stock_status' ), 10, 3 );
-		add_action( 'wafs_match_condition_backorder', array( $this, 'wafs_match_condition_backorder' ), 10, 3 );
 		add_action( 'wafs_match_condition_category', array( $this, 'wafs_match_condition_category' ), 10, 3 );
 		
 	}
@@ -220,6 +219,8 @@ class Wafs_Match_Conditions {
 
 	/* Match zipcode
 	 *
+	 * @since 1.0.2; $value may contain single or comma (,) separated zipcodes
+	 *
 	 * @param bool $match
 	 * @param string $operator
 	 * @param mixed $value
@@ -232,9 +233,21 @@ class Wafs_Match_Conditions {
 		if ( !isset( $woocommerce->customer ) ) return;
 
 		if ( '==' == $operator ) :
-			$match = ( $woocommerce->customer->get_shipping_postcode() == $value );
+
+			if ( preg_match( '/\,(\s)?/', $value ) ) :
+				$match = ( in_array( $woocommerce->customer->get_shipping_postcode(), explode( ',', $value ) ) );
+			else :
+				$match = ( $woocommerce->customer->get_shipping_postcode() == $value );
+			endif;
+
 		elseif ( '!=' == $operator ) :
-			$match = ( $woocommerce->customer->get_shipping_postcode() != $value );
+
+			if ( preg_match( '/\,/', $value ) ) :
+				$match = ( !in_array( $woocommerce->customer->get_shipping_postcode(), explode( ',', $value ) ) );
+			else :
+				$match = ( $woocommerce->customer->get_shipping_postcode() != $value );
+			endif;
+
 		elseif ( '>=' == $operator ) :
 			$match = ( $woocommerce->customer->get_shipping_postcode() >= $value );
 		elseif ( '<=' == $operator ) :
@@ -580,43 +593,6 @@ class Wafs_Match_Conditions {
 	}	
 	
 
-	/* Match all products backorder
-	 *
-	 * @param bool $match
-	 * @param string $operator
-	 * @param mixed $value
-	 * @return bool
-	 */
-	public function wafs_match_condition_backorder( $match, $operator, $value ) {
-
-		global $woocommerce;
-
-		if ( ! isset( $woocommerce->cart ) ) return;
-		
-		$match = true;
-		
-		if ( '==' == $operator ) :
-			
-			foreach ( $woocommerce->cart->cart_contents as $product ) :
-				if ( get_post_meta( $product['product_id'], '_backorders', true ) != $value ) :
-					$match = false;
-				endif;
-			endforeach;
-			
-		elseif ( '!=' == $operator ) :
-		
-			foreach ( $woocommerce->cart->cart_contents as $product ) :
-				if ( get_post_meta( $product['product_id'], '_backorders', true ) == $value )
-					$match = false;
-			endforeach;
-		
-		endif;
-
-		return $match;
-		
-	}
-	
-	
 	/* Match category
 	 *
 	 * @param bool $match

@@ -17,6 +17,9 @@ function wafs_condition_description( $condition ) {
 	);
 	
 	// Display description
+	if ( !isset( $descriptions[ $condition ] ) ) :
+		return;
+	endif;
 	?>
 	<span class='wafs-description <?php echo $descriptions[ $condition ]; ?>-description'>
 

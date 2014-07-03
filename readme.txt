@@ -4,7 +4,7 @@ Donate link: http://www.jeroensormani.com/donate/
 Tags: woocommerce, shipping, woocommerce shipping, woocommerce free shipping, woocommerce free, woocommerce advanced free shipping, wc free shipping, wc shipping, advanced shipping, pro shipping, table rate shipping, country shipping, free shipping
 Requires at least: 3.6
 Tested up to: 3.9
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -41,6 +41,12 @@ WooCommerce Advanced Free Shipping is an plugin which allows you to set up advan
 3. WAFS shipping conditions possibilities
 
 == Changelog ==
+
+= 1.0.2 = 07/03/2014
+* Added - support for comma separated zipcodes
+* Added - filter for condition values
+* Added - filter for condition descriptions
+
 
 = 1.0.1 =
 * Fix - Wrongful url for sub-domain websites

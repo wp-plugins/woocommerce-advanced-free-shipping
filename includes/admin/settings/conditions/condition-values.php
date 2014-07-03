@@ -131,17 +131,6 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 			);
 			
 		break;
-		
-		case 'backorder' : 
-			
-			$values['backorder'] = 'select';
-			$values['values'] = array(
-				'no' 		=> __( 'Do not allow', 'woocommerce' ),
-				'notify' 	=> __( 'Allow, but notify customer', 'woocommerce' ),
-				'yes' 		=> __( 'Allow', 'woocommerce' )
-			);
-			
-		break;
 
 		case 'category' :
 		
@@ -156,6 +145,8 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 
 		
 	endswitch;
+
+	$values = apply_filters( 'wafs_values', $values, $condition );
 	?>
 	
 	<span class='wafs-value-wrap wafs-value-wrap-<?php echo $id; ?>'>
@@ -166,14 +157,14 @@ function wafs_condition_values( $id, $group = 0, $condition = 'subtotal', $curre
 			case 'text' :
 				?>
 				<input type='text' class='wafs-value' name='_wafs_shipping_method_conditions[<?php echo $group; ?>][<?php echo $id; ?>][value]' 
-					placeholder='<?php echo $values['placeholder']; ?>' value='<?php echo $current_value; ?>'>
+					placeholder='<?php echo @$values['placeholder']; ?>' value='<?php echo $current_value; ?>'>
 				<?php
 			break;
 			
 			case 'number' : 
 				?>
 				<input type='text' class='wafs-value' name='_wafs_shipping_method_conditions[<?php echo $group; ?>][<?php echo $id; ?>][value]' 
-					min='<?php echo $values['min']; ?>' max='<?php echo $values['max']; ?>' placeholder='<?php echo $values['placeholder']; ?>' 
+					min='<?php echo @$values['min']; ?>' max='<?php echo @$values['max']; ?>' placeholder='<?php echo @$values['placeholder']; ?>' 
 					value='<?php echo $current_value; ?>'>
 				<?php
 			break;

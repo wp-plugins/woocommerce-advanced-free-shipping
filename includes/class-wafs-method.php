@@ -44,7 +44,13 @@ if ( ! class_exists( 'Wafs_Free_Shipping_Method' ) ) {
 			add_action( 'woocommerce_update_options_shipping_' . $this->id, array( $this, 'process_admin_options' ) );
 			
 			// Hide shipping methods
-			add_filter( 'woocommerce_available_shipping_methods', array( $this, 'hide_all_shipping_when_free_is_available' ) );
+			global $woocommerce;
+			if ( version_compare( $woocommerce->version, '2.1', '<' ) ) :
+				add_filter( 'woocommerce_available_shipping_methods', array( $this, 'hide_all_shipping_when_free_is_available' ) );
+			else :
+				add_filter( 'woocommerce_package_rates', array( $this, 'hide_all_shipping_when_free_is_available' ) );
+			endif;
+
 			
 		}
 		
@@ -61,6 +67,7 @@ if ( ! class_exists( 'Wafs_Free_Shipping_Method' ) ) {
 
 			$methods = get_posts( array( 'posts_per_page' => '-1', 'post_type' => 'wafs' ) );
 			
+			$matched_methods = '';
 			foreach ( $methods as $method ) :
 
 				$condition_groups = get_post_meta( $method->ID, '_wafs_shipping_method_conditions', true );
@@ -191,7 +198,7 @@ if ( ! class_exists( 'Wafs_Free_Shipping_Method' ) ) {
 			
 			$match_details 	= get_post_meta( $this->matched_methods, '_wafs_shipping_method', true );
 			$label 			= $match_details['shipping_title'];
-			$calc_tax 		= $match_details['calc_tax'];
+			$calc_tax 		= @$match_details['calc_tax'];
 			
 			$rate = array(
 				'id'       => $this->id,

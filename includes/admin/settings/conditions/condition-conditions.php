@@ -25,7 +25,6 @@ function wafs_condition_conditions( $id, $group = 0, $current_value = 'total' ) 
 			'weight' 			=> __( 'Weight', 'wafs' ),
 			'stock' 			=> __( 'Stock', 'wafs' ),
 			'stock_status'		=> __( 'Stock status', 'wafs' ),
-			'backorder' 		=> __( 'Backorders', 'wafs' ),
 			'category' 			=> __( 'Category', 'wafs' ),
 		),
 	);
