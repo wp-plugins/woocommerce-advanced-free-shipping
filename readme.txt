@@ -62,6 +62,7 @@ WooCommerce Advanced Free Shipping is an plugin which allows you to set up advan
 * Fix - Condition description didn't show sometimes
 * Fix - 'Category' - 'Not equal to' error
 * Fix - Showing drafts in overview
+* Fix - Change option name from ‚hide_other_shipping_when_available’ to ‚’hide_other_shipping
 * Removed - Author from overview, who needs that?
 
 
