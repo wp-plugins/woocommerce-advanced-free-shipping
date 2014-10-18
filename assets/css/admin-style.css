@@ -40,7 +40,7 @@
 }
 
 #wafs_conditions p + p {
-	display: none;
+	display: none !important;
 }
 /* Description */
 .wafs_desc {
@@ -104,7 +104,7 @@
 }
 
 
-/* © WooCommerce Add icon */
+/* WooCommerce Add icon */
 .add.button:before {
 	font-family: WooCommerce;
 	speak: none;
@@ -115,4 +115,11 @@
 	-webkit-font-smoothing: antialiased;
 	margin-right: 7px;
 	content: "\e007";
+}
+/* Overview row actions */
+#advanced_free_shipping_shipping_methods tr .row-actions {
+	visibility: hidden;
+}
+#advanced_free_shipping_shipping_methods tr:hover > td > .row-actions {
+	visibility: visible !important;
 }
