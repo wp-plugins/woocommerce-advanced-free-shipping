@@ -1,9 +1,9 @@
 <?php
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 /**
- * Class WAFS_Ajax.
+ * Class Wafs_post_type
  *
- * Initialize the WAFS post type.
+ * Initialize the WAFS post type
  *
  * @class       WAFS_Ajax
  * @author     	Jeroen Sormani

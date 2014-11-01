@@ -4,7 +4,7 @@ Plugin Name: Woocommerce Advanced Free Shipping
 Plugin URI: http://www.jeroensormani.com/
 Donate link: http://www.jeroensormani.com/donate/
 Description: WooCommerce Advanced Free Shipping is an plugin which allows you to set up advanced free shipping conditions.
-Version: 1.0.3
+Version: 1.0.4
 Author: Jeroen Sormani
 Author URI: http://www.jeroensormani.com/
 Text Domain: woocommerce-advanced-free-shipping
@@ -45,10 +45,10 @@ class WooCommerce_Advanced_Free_Shipping {
 	/**
 	 * Version.
 	 *
-	 * @since 1.0.3
+	 * @since 1.0.4
 	 * @var string $version Plugin version number.
 	 */
-	public $version = '1.0.3';
+	public $version = '1.0.4';
 
 
 	/**
@@ -78,10 +78,6 @@ class WooCommerce_Advanced_Free_Shipping {
 			endif;
 		endif;
 
-		// Check if there needs to be any functional updates
-		$this->update();
-
-		// Initialize plugin parts
 		$this->init();
 
 	}
@@ -104,32 +100,6 @@ class WooCommerce_Advanced_Free_Shipping {
 		}
 
 		return self::$instance;
-
-	}
-
-
-	public function update() {
-
-		$db_version = get_option( 'wafs_plugin_version', '1.0.0' );
-
-		// Stop current version is up to date
-		if ( $db_version >= $this->version ) :
-			return;
-		endif;
-
-		// Update functions for 1.0.3
-		if ( version_compare( '1.0.3', $db_version ) ) :
-
-			$wafs_method_settings = get_option( 'woocommerce_advanced_free_shipping_settings' );
-			if ( isset( $wafs_method_settings['hide_other_shipping_when_available'] ) ) :
-				$wafs_method_settings['hide_other_shipping'] = $wafs_method_settings['hide_other_shipping_when_available'];
-				update_option( 'woocommerce_advanced_free_shipping_settings', $wafs_method_settings );
-			endif;
-
-		endif;
-
-		update_option( 'wafs_plugin_version', $this->version );
-
 
 	}
 

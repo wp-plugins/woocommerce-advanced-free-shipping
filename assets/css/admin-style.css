@@ -40,7 +40,7 @@
 }
 
 #wafs_conditions p + p {
-	display: none !important;
+	display: none;
 }
 /* Description */
 .wafs_desc {

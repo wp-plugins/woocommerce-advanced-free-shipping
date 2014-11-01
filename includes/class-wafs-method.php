@@ -39,7 +39,7 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 		$this->init_settings();
 
 		$this->enabled 			= $this->get_option( 'enabled' );
-		$this->hide_shipping 	= $this->get_option( 'hide_other_shipping' );
+		$this->hide_shipping 	= $this->get_option( 'hide_other_shipping_when_available' );
 
 		// Save settings in admin if you have any defined
 		add_action( 'woocommerce_update_options_shipping_' . $this->id, array( $this, 'process_admin_options' ) );
@@ -143,7 +143,7 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 				'label' 		=> __( 'Enable Advanced Free Shipping', 'woocommerce-advanced-free-shipping' ),
 				'default' 		=> 'yes'
 			),
-			'hide_other_shipping' => array(
+			'hide_other_shipping_when_available' => array(
 				'title' 		=> __( 'Hide other shipping', 'woocommerce-advanced-free-shipping' ),
 				'type' 			=> 'checkbox',
 				'label' 		=> __( 'Hide other shipping methods when free shipping is available', 'woocommerce-advanced-free-shipping' ),
@@ -164,7 +164,7 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @return string Conditions table HTML.
+	 * @return string
 	 */
 	public function generate_conditions_table_html() {
 
@@ -203,6 +203,7 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 * @since 1.0.0
 	 *
 	 * @param mixed $package
+	 * @return void
 	 */
 	public function calculate_shipping( $package ) {
 
@@ -232,8 +233,8 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 	 *
 	 * @since 1.0.0
 	 *
-	 * @param 	array 	$available_methods	List of available methods.
-	 * @return 	array						List of modified available methods.
+	 * @param array $available_methods
+	 * @return array
 	 */
 	public function hide_all_shipping_when_free_is_available( $available_methods ) {
 
@@ -241,11 +242,11 @@ class Wafs_Free_Shipping_Method extends WC_Shipping_Method {
 
 	 	if ( isset( $available_methods['advanced_free_shipping'] ) ) :
 
-			return array( $available_methods['advanced_free_shipping'] );
+			return array( 'advanced_free_shipping' => $available_methods['advanced_free_shipping'] );
 
 	 	elseif ( isset( $available_methods['free_shipping'] ) ) :
 
-	 		return array( $available_methods['free_shipping'] );
+	 		return array( 'free_shipping' => $available_methods['free_shipping'] );
 
 	 	else :
 
