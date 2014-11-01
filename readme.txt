@@ -13,7 +13,7 @@ WooCommerce Advanced Free Shipping is an plugin which allows you to set up advan
 == Description ==
 WooCommerce Advanced Free Shipping is an plugin which allows you to set up advanced free shipping conditions.
 
-*Conditions like:*
+**Conditions like:**
 
 - Cart total
 - Country
