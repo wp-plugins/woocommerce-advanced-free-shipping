@@ -13,7 +13,7 @@ WooCommerce Advanced Free Shipping is an plugin which allows you to set up advan
 == Description ==
 WooCommerce Advanced Free Shipping is an plugin which allows you to set up advanced free shipping conditions.
 
-*Conditions like:*
+**Conditions like:**
 
 - Cart total
 - Country
@@ -31,6 +31,7 @@ WooCommerce Advanced Free Shipping is an plugin which allows you to set up advan
 ** Translations **
 
 - Spanish [(Andres Felipe)](https://wordpress.org/support/profile/naturalworldstm)
+- Portuguese
 
 == Installation ==
 
@@ -49,7 +50,7 @@ WooCommerce Advanced Free Shipping is an plugin which allows you to set up advan
 = 1.0.4 =
 * Fix - Weight condition wasn't working
 * Fix - Cash On Delivery for WAFS
-* Added - Added languages files for Portugese - Brazil pt_BR
+* Added - Added languages files for Portuguese - Brazil pt_BR
 
 = 1.0.3 =
 * Improvement - Customized user messages when saving shipping method
